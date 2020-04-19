@@ -22,18 +22,7 @@ export default function App() {
   }, []);
 
   async function handleLikeRepository(id) {
-    const response = await api.post(`repositories/${id}/like`);
-
-    const repositoryIndex = repositories.findIndex(repo => repo.id === id);
-
-    const repository = {
-      ...repositories[repositoryIndex],
-      likes: repositories[repositoryIndex].likes +1
-    };
-
-    repositories[repositoryIndex] = repository;
-
-    setRepositories([...repositories]);
+    // Implement "Like Repository" functionality
   }
 
   return (
@@ -45,12 +34,12 @@ export default function App() {
           keyExtractor={(repository) => repository.id}
           renderItem={({item}) => (
             <>
-              <View key={item.id} style={styles.repositoryContainer}>
+              <View style={styles.repositoryContainer}>
                 <Text style={styles.repository}>{item.title}</Text>
 
                 <View style={styles.techsContainer}>
                   {item.techs.map(tesch => 
-                    <Text key={tesch} style={styles.tech}>
+                    <Text style={styles.tech}>
                       {tesch}
                     </Text>)
                   }
@@ -60,7 +49,7 @@ export default function App() {
                   <Text
                     style={styles.likeText}
                     // Remember to replace "1" below with repository ID: {`repository-likes-${repository.id}`}
-                    testID={`repository-likes-${item.id}`}
+                    testID={`repository-likes-1`}
                   >
                     {item.likes} curtidas
                   </Text>
@@ -70,7 +59,7 @@ export default function App() {
                   style={styles.button}
                   onPress={() => handleLikeRepository(item.id)}
                   // Remember to replace "1" below with repository ID: {`like-button-${repository.id}`}
-                  testID={`like-button-${item.id}`}
+                  testID={`like-button-1`}
                 >
                   <Text style={styles.buttonText}>Curtir</Text>
                 </TouchableOpacity>

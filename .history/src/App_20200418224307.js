@@ -33,7 +33,7 @@ export default function App() {
 
     repositories[repositoryIndex] = repository;
 
-    setRepositories([...repositories]);
+    setRepositories([...repositories, repository]);
   }
 
   return (
